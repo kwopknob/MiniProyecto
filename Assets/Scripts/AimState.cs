@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collec
+using System.Collections.Generic;
 using UnityEngine;
-using Unity.Cinemachine;
+using Cinemachine;
 using UnityEngine.InputSystem;
 
-public class AimStateManager : MonoBehaviour
+public class AimState : MonoBehaviour
 {
     [SerializeField] private Transform camFollowPos;
     [SerializeField] private float mouseSensitivity = 1f;
