@@ -561,6 +561,84 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1001 &449660256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.40338156
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5806169
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.58074266
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.40361536
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -69.589
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180.028
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.007
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44e576444e4f9cb4b85da16c2c149c25, type: 2}
+    - target: {fileID: -7511558181221131132, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44e576444e4f9cb4b85da16c2c149c25, type: 2}
+    - target: {fileID: 919132149155446097, guid: a042904f50472824ea839422115f3ac1,
+        type: 3}
+      propertyPath: m_Name
+      value: Ovni
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a042904f50472824ea839422115f3ac1, type: 3}
 --- !u!1 &501783855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,14 +1118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TextureWarpingFactor: 1
-  _TextureWarpingMode: 0
+  _TextureWarpingMode: 1
   _VertexGridResolution: 83.8
   _VertexWobbleMode: 0
   _UseRetroVertexLighting: 1
   _RetroLightingNormalFactor: 0.862
   _RetroLightFalloffStart: 0.152
   _FlatShadingMode: 0
-  _TriangleSortMode: 3
+  _TriangleSortMode: 0
   _DepthDebugView: 0
 --- !u!4 &1546781616
 Transform:
@@ -1075,3 +1153,4 @@ SceneRoots:
   - {fileID: 1218579482}
   - {fileID: 1514125729}
   - {fileID: 1546781616}
+  - {fileID: 449660256}

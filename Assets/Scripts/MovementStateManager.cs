@@ -14,6 +14,7 @@ public class MovementStateManager : MonoBehaviour
     private Vector3 movementDirection;
     private Vector3 spherePosition;
 
+
     private void Awake()
     {
         // Cache the CharacterController component for performance
