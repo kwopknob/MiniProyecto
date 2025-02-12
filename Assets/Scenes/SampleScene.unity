@@ -277,12 +277,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d157ff2ffbf41ec4f8291aac256dafe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  currentMoveSpeed: 0
+  walkSpeed: 1
+  walkBackSpeed: 0.5
+  runSpeed: 3
+  runBackSpeed: 1
   groundYOffset: 0.25
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   gravity: -9.81
+  animator: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  movementDirection: {x: 0, y: 0, z: 0}
+  spherePosition: {x: 0, y: 0, z: 0}
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!114 &143116555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0c29b2f3393ad4b94c2eba07297a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSense: 1
   camFollowPos: {fileID: 501783856}
-  mouseSensitivity: 0.02
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

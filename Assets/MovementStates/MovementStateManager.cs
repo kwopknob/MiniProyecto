@@ -4,47 +4,64 @@ using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
+    public float currentMoveSpeed;
+    public float walkSpeed = 3, walkBackSpeed = 2;
+    public float runSpeed = 7, runBackSpeed = 5;
     [SerializeField] private float groundYOffset = 0.1f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float gravity = -9.81f;
+     MovementBaseState currentState;
+
+    public IdleState Idle = new IdleState();
+    public WalkState Walk = new WalkState();
+    public RunState Run = new RunState();
+
+    [HideInInspector] public Animator animator;
 
     private CharacterController controller;
-    private Vector3 velocity;
-    private Vector3 movementDirection;
-    private Vector3 spherePosition;
+    public Vector3 velocity;
+    public Vector3 movementDirection;
+    public Vector3 spherePosition;
+
+    public float horizontalInput;
+    public float verticalInput;
 
 
-    private void Awake()
+    private void Start()
     {
-        // Cache the CharacterController component for performance
+  
         controller = GetComponent<CharacterController>();
-        if (controller == null)
-        {
-            Debug.LogError("CharacterController component is missing!");
-            enabled = false;
-            return;
-        }
+        SwitchState(Idle);
+        animator = GetComponentInChildren<Animator>();
+   
     }
 
     private void Update()
     {
-        // Calculate movement direction
+       
         GetDirection();
 
-        // Apply gravity
+      
         ApplyGravity();
-
-        // Combine movement and gravity, then move the character
-        Vector3 finalMove = movementDirection * moveSpeed + velocity;
+        currentState.UpdateState(this);
+      
+        Vector3 finalMove = movementDirection * currentMoveSpeed + velocity;
         controller.Move(finalMove * Time.deltaTime);
-    }
 
+        animator.SetFloat("hzInput", horizontalInput);
+        animator.SetFloat("vInput", verticalInput);
+    }
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
     private void GetDirection()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        controller.Move(movementDirection.normalized * currentMoveSpeed * Time.deltaTime);
     }
     private bool IsGrounded()
     {
