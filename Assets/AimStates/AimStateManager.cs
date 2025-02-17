@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class AimStateManager : MonoBehaviour
 {
-
+    public bool mouseLock;
     AimBaseState currentState;
     public HipfireState Hip = new HipfireState();
     public AimState Aim = new AimState();
@@ -14,7 +14,7 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] Transform camFollowPos;
 
     [HideInInspector] public Animator animator;
-    public CinemachineVirtualCamera vCam;
+    private CinemachineVirtualCamera vCam;
     public float adsFov = 40;
     [HideInInspector] public float hipFov;
     [HideInInspector] public float currentFov;
@@ -23,10 +23,11 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] Transform aimPos;
     [SerializeField] float aimSmoothSpeed;
     [SerializeField] LayerMask aimMask;
+    public Vector3 mouseWorldPosition = Vector3.zero;
 
     private void Start()
     {
-        vCam = GetComponentInChildren<CinemachineVirtualCamera>();
+        vCam = FindObjectOfType<CinemachineVirtualCamera>();
         hipFov = vCam.m_Lens.FieldOfView;
         animator = GetComponent<Animator>();
         currentFov = hipFov;
@@ -36,19 +37,13 @@ public class AimStateManager : MonoBehaviour
     private void Update()
     {
         xAxis += Input.GetAxisRaw("Mouse X") * mouseSense;
-        yAxis -= Input.GetAxisRaw("Mouse Y") * mouseSense ;
+        yAxis -= Input.GetAxisRaw("Mouse Y") * mouseSense;
         yAxis = Mathf.Clamp(yAxis, -80, 80);
         currentState.UpdateState(this);
         vCam.m_Lens.FieldOfView = Mathf.Lerp(vCam.m_Lens.FieldOfView, currentFov, fovSmoothSpeed * Time.deltaTime);
 
-        Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
-        Ray ray = Camera.main.ScreenPointToRay(screenCentre);
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
-            //aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
-            aimPos.position = hit.point;
-
-
-
+        HandleCursor();
+        UpdateAimPosition();
     }
 
     private void LateUpdate()
@@ -61,5 +56,25 @@ public class AimStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    public void HandleCursor()
+    {
+        Cursor.lockState = mouseLock ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    private void UpdateAimPosition()
+    {
+        Vector2 screenCentrePoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        Ray ray = Camera.main.ScreenPointToRay(screenCentrePoint);
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimMask))
+        {
+            aimPos.position = raycastHit.point;
+            mouseWorldPosition = raycastHit.point;
+
+            // Debug para verificar el raycast
+            Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.red);
+        }
     }
 }
