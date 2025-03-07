@@ -25,6 +25,9 @@ public class WeaponManager : MonoBehaviour
 
     ActionStateManager actions;
 
+    ParticleSystem muzzlFlash;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class WeaponManager : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
         ammo = GetComponent<WeaponAmmo>();
         actions = GetComponentInParent<ActionStateManager>();
+        muzzlFlash = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -65,7 +69,10 @@ public class WeaponManager : MonoBehaviour
          GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation);
             Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
             rb.AddForce(barrelPos.forward*bulletVelocity,ForceMode.Impulse);
+            muzzlFlash.Play();
         }
        
     }
+
+  
 }
