@@ -51,6 +51,10 @@ public class ActionStateManager : MonoBehaviour
     {
         audioSource.PlayOneShot(ammo.ReloadSound);
     }
+    public void MagSound()
+    {
+        audioSource.PlayOneShot(ammo.MagReload);
+    }
 
-   
+
 }
