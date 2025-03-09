@@ -10,11 +10,16 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField] private float groundYOffset = 0.1f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float gravity = -9.81f;
-     MovementBaseState currentState;
+    [SerializeField] float jumpForce = 10;
+    [HideInInspector] public bool jumped;
 
+     MovementBaseState currentState;
+    public MovementBaseState previousState;
+   
     public IdleState Idle = new IdleState();
     public WalkState Walk = new WalkState();
     public RunState Run = new RunState();
+    public JumpState Jump = new JumpState();
 
     [HideInInspector] public Animator animator;
 
@@ -63,7 +68,7 @@ public class MovementStateManager : MonoBehaviour
         movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
         controller.Move(movementDirection.normalized * currentMoveSpeed * Time.deltaTime);
     }
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         spherePosition = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
         return Physics.CheckSphere(spherePosition, controller.radius - 0.05f, groundMask);
@@ -73,15 +78,15 @@ public class MovementStateManager : MonoBehaviour
     {
         if (IsGrounded())
         {
-            // Reset gravity when grounded
+           
             if (velocity.y < 0)
             {
-                velocity.y = -2f; // Slight negative value to ensure contact with the ground
+                velocity.y = -2f; 
             }
         }
         else
         {
-            // Apply gravity over time when not grounded
+           
             velocity.y += gravity * Time.deltaTime;
         }
     }
@@ -95,4 +100,8 @@ public class MovementStateManager : MonoBehaviour
             controller != null ? controller.radius - 0.05f : 0.5f
         );
     }
+
+    public void Jumporce() => velocity.y += jumpForce;
+
+    public void Jumped() => jumped = true;
 }

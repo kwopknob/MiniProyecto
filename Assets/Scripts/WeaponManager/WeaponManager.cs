@@ -19,27 +19,39 @@ public class WeaponManager : MonoBehaviour
 
 
     [SerializeField] AudioClip gunShot;
-    AudioSource audiosource;
+    [HideInInspector]public AudioSource audiosource;
 
-    WeaponAmmo ammo;
+    [HideInInspector]public WeaponAmmo ammo;
 
     ActionStateManager actions;
 
     ParticleSystem muzzlFlash;
     
+    public  Transform leftHandTarget, leftHandHint;
 
+    WeaponClassManager weaponClass;
 
     // Start is called before the first frame update
     void Start()
     {
         aim = GetComponentInParent<AimStateManager>();
         fireRateTimer = fireRate;
-        audiosource = GetComponent<AudioSource>();
-        ammo = GetComponent<WeaponAmmo>();
+        
+        
         actions = GetComponentInParent<ActionStateManager>();
         muzzlFlash = GetComponentInChildren<ParticleSystem>();
     }
-
+    private void OnEnable()
+    {
+        if(weaponClass == null)
+        {
+            weaponClass = GetComponentInParent<WeaponClassManager>();
+            ammo = GetComponent<WeaponAmmo>();
+            audiosource = GetComponent<AudioSource>();
+        }
+        weaponClass.SetCurrentWeapon(this);
+       
+    }
     // Update is called once per frame
     void Update()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DefaultState : ActionBaseState
 {
+
+    public float scrollDirection;
    
     // Start is called before the first frame update
     public override void EnterState(ActionStateManager action)
@@ -19,6 +21,11 @@ public class DefaultState : ActionBaseState
         {
             action.SwitchState(action.Reload);
            
+        }
+        else if(Input.mouseScrollDelta.y != 0)
+        {
+            scrollDirection = Input.mouseScrollDelta.y;
+            action.SwitchState(action.Swap);
         }
     }
 
