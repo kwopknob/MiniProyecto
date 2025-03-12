@@ -23,10 +23,10 @@ public class AlienHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage(50);
-        }
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    TakeDamage(50);
+        //}
     }
     public void TakeDamage(int damageAmount)
     {
@@ -45,11 +45,12 @@ public class AlienHealth : MonoBehaviour
 
     public void Die() 
     {
-        isDead = true;
-        anim.SetTrigger("Death");
+        isDead = true;  
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
+        anim.SetTrigger("Death");
         StartCoroutine(DespawnTimer());
+        Debug.Log("Muerte");
 
     }
 
@@ -61,7 +62,7 @@ public class AlienHealth : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 2f); // Attacking
+        Gizmos.DrawWireSphere(transform.position,   1.5f); // Attacking
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 15f); // Detection (Start Chasing)

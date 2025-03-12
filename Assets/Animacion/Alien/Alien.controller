@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21dc618187fc2324fa4b69b3939266f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 6
+  chaseSpeed: 3.5
   stopChasingDistance: 21
   attackingDistance: 2.5
 --- !u!1102 &-6026295624494510446
@@ -149,7 +149,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.2
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0

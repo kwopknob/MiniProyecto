@@ -7,11 +7,9 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float timeToDestroy;
     float timer;
+    [SerializeField] private int bulletDamage;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
     // Update is called once per frame
     void Update()
@@ -21,8 +19,17 @@ public class Bullet : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+        
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<AlienHealth>() != null) 
+        {
+            other.GetComponent<AlienHealth>().TakeDamage(bulletDamage);
+        }
         Destroy(this.gameObject);
     }
 }
