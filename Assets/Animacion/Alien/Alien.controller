@@ -366,7 +366,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Chase
-  m_Speed: 1
+  m_Speed: 0.52
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7419876410511980364}
@@ -445,7 +445,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Patrolling
-  m_Speed: 1
+  m_Speed: 0.49
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8093620186400944534}
