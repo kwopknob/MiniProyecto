@@ -48,6 +48,7 @@ public class MovementStateManager : MonoBehaviour
 
       
         ApplyGravity();
+        Falling();
         currentState.UpdateState(this);
       
         Vector3 finalMove = movementDirection * currentMoveSpeed + velocity;
@@ -72,6 +73,11 @@ public class MovementStateManager : MonoBehaviour
     {
         spherePosition = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
         return Physics.CheckSphere(spherePosition, controller.radius - 0.05f, groundMask);
+    }
+
+    public void Falling()
+    {
+        animator.SetBool("Falling", !IsGrounded());
     }
 
     private void ApplyGravity()

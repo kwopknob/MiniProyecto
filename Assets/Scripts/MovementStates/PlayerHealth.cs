@@ -1,55 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 100;
+    public TextMeshProUGUI healthText;
+    public GameObject deathUI;
     private Animator anim;
     private bool isDead = false;
     private CapsuleCollider capsuleCollider;
-   
-    // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        
-
+        UpdateHealthUI();
+        if (deathUI != null)
+        {
+            deathUI.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-        //    TakeDamage(50);
-        //}
-    }
     public void TakeDamage(int damageAmount)
     {
         if (isDead) return;
 
         playerHealth -= damageAmount;
+        UpdateHealthUI();
+
         if (playerHealth <= 0)
         {
             Die();
         }
-        else
+    }
+
+    void UpdateHealthUI()
+    {
+        if (healthText != null)
         {
-            //anim.SetTrigger("Damage");
+            healthText.text = "Health: " + playerHealth;
         }
     }
 
     public void Die()
     {
         isDead = true;
-        //capsuleCollider.enabled = false;
-
-        //anim.SetTrigger("Death");
-
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (deathUI != null)
+        {
+            deathUI.SetActive(true);
+        }
         Debug.Log("Muerte");
+    }
 
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }

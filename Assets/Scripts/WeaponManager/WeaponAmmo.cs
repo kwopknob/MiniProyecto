@@ -21,7 +21,7 @@ public class WeaponAmmo : MonoBehaviour
         currentAmmo = clipSize;
     }
    
-
+    
 
     public void Reload()
     {
@@ -47,6 +47,14 @@ public class WeaponAmmo : MonoBehaviour
                 extraAmmo = 0;
             }
         }
+    }
+    public int GetAmmo()
+    {
+        return currentAmmo;
+    }
+    public int GetMaxAmmo()
+    {
+        return extraAmmo;
     }
 
 }

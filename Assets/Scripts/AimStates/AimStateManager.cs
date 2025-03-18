@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class AimStateManager : MonoBehaviour
 {
-    public bool mouseLock;
+    public bool mouseLock = true;
     AimBaseState currentState;
     public HipfireState Hip = new HipfireState();
     public AimState Aim = new AimState();
@@ -33,6 +33,7 @@ public class AimStateManager : MonoBehaviour
         animator = GetComponent<Animator>();
         currentFov = hipFov;
         SwitchState(Hip);
+        HandleCursor();
     }
 
     private void Update()
@@ -43,7 +44,7 @@ public class AimStateManager : MonoBehaviour
         currentState.UpdateState(this);
         vCam.m_Lens.FieldOfView = Mathf.Lerp(vCam.m_Lens.FieldOfView, currentFov, fovSmoothSpeed * Time.deltaTime);
 
-        HandleCursor();
+        
         UpdateAimPosition();
     }
 
