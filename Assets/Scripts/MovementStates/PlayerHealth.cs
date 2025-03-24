@@ -9,20 +9,31 @@ public class PlayerHealth : MonoBehaviour
     public int playerHealth = 100;
     public TextMeshProUGUI healthText;
     public GameObject deathUI;
+    public AudioClip damageSound; // Sound when hit
+    public Renderer playerRenderer; // Assign the player's Renderer in the Inspector
+    public float flashDuration = 0.2f; // How long the player flashes red
+
+    private AudioSource audioSource;
     private Animator anim;
     private bool isDead = false;
     private CapsuleCollider capsuleCollider;
-    AimStateManager aim;
-    CharacterController perosnaje;
-    
-   
+    private AimStateManager aim;
+    private CharacterController personaje;
+    private Color originalColor;
 
     void Start()
     {
         aim = GetComponent<AimStateManager>();
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        perosnaje = GetComponent<CharacterController>();
+        personaje = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (playerRenderer != null)
+        {
+            originalColor = playerRenderer.material.color; // Store original color
+        }
+
         UpdateHealthUI();
         if (deathUI != null)
         {
@@ -36,6 +47,18 @@ public class PlayerHealth : MonoBehaviour
 
         playerHealth -= damageAmount;
         UpdateHealthUI();
+
+        // Play damage sound
+        if (damageSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
+
+        // Flash red effect
+        if (playerRenderer != null)
+        {
+            StartCoroutine(FlashRed());
+        }
 
         if (playerHealth <= 0)
         {
@@ -51,21 +74,26 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    IEnumerator FlashRed()
+    {
+        playerRenderer.material.color = Color.red; // Change to red
+        yield return new WaitForSeconds(flashDuration);
+        playerRenderer.material.color = originalColor; // Revert to original color
+    }
+
     public void Die()
     {
         isDead = true;
-        //Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (deathUI != null)
         {
             deathUI.SetActive(true);
         }
+
         Debug.Log("Muerte");
         aim.enabled = false;
-        perosnaje.enabled = false;
-        
-
+        personaje.enabled = false;
     }
 
     public void ReturnToMenu()

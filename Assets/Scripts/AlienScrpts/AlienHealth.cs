@@ -11,12 +11,14 @@ public class AlienHealth : MonoBehaviour
     private CapsuleCollider capsuleCollider;
     private NavMeshAgent navMeshAgent;
     public float destroyTimer = 15f;
+    private UI ui;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        ui = FindAnyObjectByType<UI>();
         
     }
 
@@ -51,6 +53,7 @@ public class AlienHealth : MonoBehaviour
         anim.SetTrigger("Death");
         StartCoroutine(DespawnTimer());
         Debug.Log("Muerte");
+        ui.KillCount();
 
     }
 

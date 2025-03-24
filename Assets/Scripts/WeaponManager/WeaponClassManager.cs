@@ -56,5 +56,7 @@ public class WeaponClassManager : MonoBehaviour
     public void WeaponPullOut()
     {
         state.SwitchState(state.Default);
+        UI ui = FindAnyObjectByType<UI>();
+        if (ui != null) ui.ClearRefernce();
     }
 }
