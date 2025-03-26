@@ -48,6 +48,13 @@ public class WeaponAmmo : MonoBehaviour
             }
         }
     }
+
+    public void GiveAmmo(int ammoGiven)
+    {
+
+        extraAmmo = Mathf.Clamp((extraAmmo + ammoGiven), 0, 120);
+
+    }
     public int GetAmmo()
     {
         return currentAmmo;
@@ -56,5 +63,8 @@ public class WeaponAmmo : MonoBehaviour
     {
         return extraAmmo;
     }
+
+
+
 
 }

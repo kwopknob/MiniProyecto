@@ -15,6 +15,7 @@ public class UI : MonoBehaviour
     [SerializeField] private Button sceneChangeButton;
     [SerializeField] private string sceneName;
 
+
     private void Start()
     {
         enemyCount = maxEnemyCount;
@@ -44,7 +45,7 @@ public class UI : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             winUI.SetActive(true);
-            Time.timeScale = 0f;
+            
         }
     }
 

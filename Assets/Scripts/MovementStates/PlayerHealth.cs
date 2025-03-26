@@ -40,7 +40,13 @@ public class PlayerHealth : MonoBehaviour
             deathUI.SetActive(false);
         }
     }
+    public void GiveHealth(int healthGiven)
+    {
 
+        playerHealth = Mathf.Clamp((playerHealth + healthGiven), 0, 100);
+        UpdateHealthUI();
+
+    }
     public void TakeDamage(int damageAmount)
     {
         if (isDead) return;
