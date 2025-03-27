@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4453242957284187118
+--- !u!114 &-8100610907821513421
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,26 +9,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
-  m_Name: Vignette
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
   m_EditorClassIdentifier: 
   active: 1
-  color:
+  type:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
-  center:
-    m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.5}
+    m_Value: 9
   intensity:
     m_OverrideState: 1
-    m_Value: 0.293
-  smoothness:
+    m_Value: 0.415
+  response:
     m_OverrideState: 1
-    m_Value: 0.668
-  rounded:
+    m_Value: 0.467
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+--- !u!114 &-8058292327651726985
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 1
+  postExposure:
+    m_OverrideState: 0
+    m_Value: 0.18
+  contrast:
+    m_OverrideState: 1
+    m_Value: 23
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 1.4212059, g: 1.323761, b: 1.0256816, a: 1}
+  hueShift:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-2000916663215664325
+  saturation:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-1491272133507542165
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +83,7 @@ MonoBehaviour:
     m_Value: 65469.92
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.013485909, g: 0.004049484, b: 0.066037714, a: 1}
+    m_Value: {r: 0.8490566, g: 0.6332807, b: 0.6287825, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -85,15 +110,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Profile 1
+  m_Name: Global Volume Profile 2
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -4453242957284187118}
-  - {fileID: 3643552439583682512}
-  - {fileID: 5709752650272335806}
-  - {fileID: -2000916663215664325}
-  - {fileID: 1340946880703291417}
---- !u!114 &1340946880703291417
+  - {fileID: 2485439669730462989}
+  - {fileID: 8072664171738053793}
+  - {fileID: -8058292327651726985}
+  - {fileID: -1491272133507542165}
+  - {fileID: -8100610907821513421}
+--- !u!114 &2485439669730462989
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,23 +127,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
-  m_Name: FilmGrain
+  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
+  m_Name: Vignette
   m_EditorClassIdentifier: 
   active: 1
-  type:
+  color:
     m_OverrideState: 1
-    m_Value: 9
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.415
-  response:
+    m_Value: 0.293
+  smoothness:
     m_OverrideState: 1
-    m_Value: 0.467
-  texture:
+    m_Value: 0.668
+  rounded:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
---- !u!114 &3643552439583682512
+    m_Value: 0
+--- !u!114 &8072664171738053793
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,31 +380,3 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
---- !u!114 &5709752650272335806
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: 
-  active: 1
-  postExposure:
-    m_OverrideState: 0
-    m_Value: 0.18
-  contrast:
-    m_OverrideState: 1
-    m_Value: 23
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 0.6939535, g: 0.8177024, b: 1.4283314, a: 1}
-  hueShift:
-    m_OverrideState: 0
-    m_Value: 0
-  saturation:
-    m_OverrideState: 0
-    m_Value: 0

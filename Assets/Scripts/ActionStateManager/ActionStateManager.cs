@@ -19,6 +19,8 @@ public class ActionStateManager : MonoBehaviour
 
     public MultiAimConstraint rHandAim;
     public TwoBoneIKConstraint lHandK;
+
+    public AudioClip footstep;
   
 
 
@@ -63,6 +65,11 @@ public class ActionStateManager : MonoBehaviour
         audioSource = weapon.audiosource;
         ammo = weapon.ammo;
 
+    }
+
+    public void PlayFootstep()
+    {
+        audioSource.PlayOneShot(footstep);
     }
 
 

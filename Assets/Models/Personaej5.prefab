@@ -809,17 +809,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.9
+      value: 33.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.71
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.6
+      value: 32.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
@@ -993,7 +993,12 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
       propertyPath: m_WarningMessage
-      value: 
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Head'\n\tTransform 'mixamorig:LeftArm'\n\tTransform
+        'mixamorig:RightHand'\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
+        'mixamorig:RightForeArm'\n\tTransform 'mixamorig:Neck'\n\tTransform 'mixamorig:Spine'\n\tTransform
+        'mixamorig:LeftHand'\n\tTransform 'mixamorig:Head'\n\tand more ..."
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8eebb3b693b6f1545981498a0ae7b19a,
         type: 3}
@@ -1079,6 +1084,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1456228554250965124}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8eebb3b693b6f1545981498a0ae7b19a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615308292779398694}
   m_SourcePrefab: {fileID: 100100000, guid: 8eebb3b693b6f1545981498a0ae7b19a, type: 3}
 --- !u!4 &545419431165312847 stripped
 Transform:
@@ -1155,15 +1164,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMoveSpeed: 0
   walkSpeed: 1
-  walkBackSpeed: 0.5
+  walkBackSpeed: 0.71
   runSpeed: 3
   runBackSpeed: 1
-  groundYOffset: 0.25
+  groundYOffset: -0.27
   groundMask:
     serializedVersion: 2
     m_Bits: 65
   gravity: -9.81
-  jumpForce: 10
+  jumpForce: 5
   jumped: 0
   animator: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1226,7 +1235,7 @@ MonoBehaviour:
   aimSmoothSpeed: 20
   aimMask:
     serializedVersion: 2
-    m_Bits: 577
+    m_Bits: 65
   mouseWorldPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &7943035620013407930
 MonoBehaviour:
@@ -1241,6 +1250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+  healthText: {fileID: 0}
+  deathUI: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 098d1e28942ac4e45a16b09f2b6e2d69, type: 3}
+  playerRenderer: {fileID: 8620460773500960483}
+  flashDuration: 0.2
 --- !u!114 &634411439787590825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,6 +1288,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rHandAim: {fileID: 8726771973746094141}
   lHandK: {fileID: 8505770076247139833}
+  footstep: {fileID: 8300000, guid: 3e463d4c8a063fc4c821606b266e9848, type: 3}
 --- !u!114 &1456228554250965124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,6 +1305,102 @@ MonoBehaviour:
   weapons:
   - {fileID: 3311005687979144180}
   - {fileID: 7704724584810913431}
+--- !u!82 &1615308292779398694
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361631963937701334}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1850607408458671980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8eebb3b693b6f1545981498a0ae7b19a,
@@ -1317,6 +1428,12 @@ Transform:
 --- !u!4 &5878893758130861163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: 8eebb3b693b6f1545981498a0ae7b19a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2171883870211784839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8620460773500960483 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7603786706384944740, guid: 8eebb3b693b6f1545981498a0ae7b19a,
     type: 3}
   m_PrefabInstance: {fileID: 2171883870211784839}
   m_PrefabAsset: {fileID: 0}
@@ -1486,6 +1603,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115714281748059928, guid: 980a43fe350488c438907fa1c2072667,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115714281748059928, guid: 980a43fe350488c438907fa1c2072667,
+        type: 3}
+      propertyPath: bulletVelocity
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -26,9 +26,9 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses:
-  - GRABPASS
-  - DepthOnly
   - SHADOWCASTER
+  - DepthOnly
+  - GRABPASS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
