@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int playerHealth = 100;
+    public static int playerHealth = 100;
     public TextMeshProUGUI healthText;
     public GameObject deathUI;
-    public AudioClip damageSound; // Sound when hit
-    public Renderer playerRenderer; // Assign the player's Renderer in the Inspector
-    public float flashDuration = 0.2f; // How long the player flashes red
+    public AudioClip damageSound; 
+    public Renderer playerRenderer;
+    public float flashDuration = 0.2f;
 
     private AudioSource audioSource;
-    private Animator anim;
+    private Animator anim; 
     private bool isDead = false;
     private CapsuleCollider capsuleCollider;
     private AimStateManager aim;
@@ -23,15 +23,21 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        string name = SceneManager.GetActiveScene().name;
         aim = GetComponent<AimStateManager>();
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         personaje = GetComponent<CharacterController>();
         audioSource = GetComponent<AudioSource>();
+        if (name == "Nivel1")
+        
+        {
+            playerHealth = 100;
+        }
 
         if (playerRenderer != null)
         {
-            originalColor = playerRenderer.material.color; // Store original color
+            originalColor = playerRenderer.material.color;
         }
 
         UpdateHealthUI();
@@ -54,13 +60,13 @@ public class PlayerHealth : MonoBehaviour
         playerHealth -= damageAmount;
         UpdateHealthUI();
 
-        // Play damage sound
+       
         if (damageSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(damageSound);
         }
 
-        // Flash red effect
+       
         if (playerRenderer != null)
         {
             StartCoroutine(FlashRed());
@@ -82,9 +88,9 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator FlashRed()
     {
-        playerRenderer.material.color = Color.red; // Change to red
+        playerRenderer.material.color = Color.red;
         yield return new WaitForSeconds(flashDuration);
-        playerRenderer.material.color = originalColor; // Revert to original color
+        playerRenderer.material.color = originalColor; 
     }
 
     public void Die()

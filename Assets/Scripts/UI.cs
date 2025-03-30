@@ -44,6 +44,7 @@ public class UI : MonoBehaviour
         if (enemyCount <= 0)
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             winUI.SetActive(true);
             
         }

@@ -14811,6 +14811,7 @@ MonoBehaviour:
   barrelPos: {fileID: 42050213810858749}
   bulletVelocity: 300
   bulletsPerShoht: 1
+  noBulletSound: {fileID: 8300000, guid: 5ba3b39790423f048aad07758b8232a8, type: 3}
   gunShot: {fileID: 8300000, guid: 18a59444933c0a3488c9037201ded5b2, type: 3}
   audiosource: {fileID: 0}
   ammo: {fileID: 0}
